@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableHighlight, Text} from 'react-native';
+import {TouchableHighlight, Text, StyleSheet} from 'react-native';
 
 export function WideListButton(props) {
     return (
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         width:"90%",
         height:"30%",
 
-        borderColor:black,
+        borderColor:"black",
         borderRadius:2,
         borderWidth:5,
 
