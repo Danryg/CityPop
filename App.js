@@ -1,7 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 
 import {HomeView} from './src/views/HomeView';
 import {SearchByCityView} from './src/views/SearchByCityView'
@@ -19,15 +17,5 @@ export default function App() {
         <Stack.Screen name={screens.SearchCityView} component={SearchByCityView}/>
       </Stack.Navigator>
     </NavigationContainer>
-    
-    
-    
   );
 }
-
-const styles = StyleSheet.create({
-  mainModule:{
-    flex:1
-  }
-
-});
