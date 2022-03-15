@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet,TouchableHighlight } from 'react-native';
+
 
 function CountryListItem(props) {
     return (
-        <View style={styles.container}>
+        <TouchableHighlight style={styles.container} onPress={()=> console.log(props.name)}>
             <Text style={styles.countryName}>{props.name}</Text>
-        </View>
+        </TouchableHighlight>
     );
 }
 
