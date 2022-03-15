@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableWithoutFeedback} from 'react-native';
-import SearchFieldComponent from '../components/SearchFieldComponent';
+import CenteredTitleComponent from '../components/CenteredTitleComponent';
+import {SearchFieldComponent} from '../components/SearchFieldComponent';
 
 
 export function SearchByCityView(props) {
@@ -10,13 +11,10 @@ export function SearchByCityView(props) {
                 <TouchableWithoutFeedback onPress={()=> console.log("Back")}>
                     <Image style={styles.arrow} source={require('../../assets/Arrow.jpg')} ></Image>
                 </TouchableWithoutFeedback>
-                
                 <Text style={styles.appTitle}>CityPop</Text>
             </View>
-            <View style={styles.titleContainer}>
-                <Text style={styles.title}>Search by City</Text>
-            </View>
-            <SearchFieldComponent style={styles.buttonContainer}/>
+            <CenteredTitleComponent title={props.title}/>
+            <SearchFieldComponent style={styles.buttonContainer} searchHandler={(search) => props.searchHandler(search)}/>
         </View>
     );
 }
@@ -36,20 +34,6 @@ const styles = StyleSheet.create({
         height: 50,
         transform: [{ rotate: '180deg' }],
         marginLeft: 10
-    },
-    appTitle:{
-        fontWeight: "bold",
-        fontSize: 20,
-        marginLeft: 20
-    },
-    titleContainer:{
-        flex:0.3,
-        justifyContent: 'center',
-        
-    },
-    title:{
-        textAlign:'center',
-        fontSize: 30,
     },
     buttonContainer:{
         flex:0.6,
