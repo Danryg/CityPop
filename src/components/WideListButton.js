@@ -1,6 +1,12 @@
 import React from 'react';
 import {TouchableHighlight, Text, StyleSheet} from 'react-native';
 
+/**
+ * This is a styled and modified button
+ * @param {*handler onPress function handler} props 
+ * @param {*text button text} props 
+ * @returns WideListButton component
+ */
 export function WideListButton(props) {
     return (
         <TouchableHighlight style={styles.buttonContainer} onPress={props.handler}>

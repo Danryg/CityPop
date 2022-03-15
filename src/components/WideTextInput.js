@@ -1,6 +1,12 @@
 import React from 'react';
 import {TextInput, StyleSheet} from 'react-native';
 
+/**
+ * 
+ * @param {*placeholder placeholder text} props 
+ * @param {*searchTextHandler(text) function for getting text from inputfield} props 
+ * @returns WideTextInput component
+ */
 export function WideTextInput(props) {
     return (
         <TextInput 

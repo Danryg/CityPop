@@ -4,17 +4,24 @@ import {View, Image, StyleSheet,TouchableHighlight} from 'react-native';
 
 
 
-
+/**
+ * SearchFieldComponent
+ * This component is adds a search field and a search button
+ * @param {*searchHandler(searchText) this will be called when search button is pressed with the input text as parameter} props
+ */
 export class SearchFieldComponent extends Component{
     
     state ={
-        search: 20,
+        search: "",
     };
     
     render(){
         return (
             <View style={styles.buttonContainer}>
+                {/** Input field*/}
                 <WideTextInput placeholder ='Enter a City' searchTextHandler={this.setSearchText}/>
+
+                {/** Search button*/}
                 <TouchableHighlight onPress={()=> this.props.searchHandler(this.state.search)} style={styles.searchButtonContainer}>
                     <Image style={styles.searchButton} source={require('../../assets/SearchIcon.png')}></Image>
                 </TouchableHighlight>
