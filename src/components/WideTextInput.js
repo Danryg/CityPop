@@ -3,7 +3,11 @@ import {TextInput, StyleSheet} from 'react-native';
 
 export function WideTextInput(props) {
     return (
-        <TextInput placeholder={props.placeholder} style={styles.textInput}/>
+        <TextInput 
+            placeholder={props.placeholder} 
+            style={styles.textInput}
+            onChangeText={(text) => props.searchTextHandler(text)}
+        />
     );
 }
 
