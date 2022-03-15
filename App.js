@@ -13,9 +13,14 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home'>
-        <Stack.Screen name={screens.Home} component={HomeView}/>
-        <Stack.Screen name={screens.SearchCityView} component={SearchByCityView}/>
+        <Stack.Screen name={screens.Home} component={HomeView} options={{headerShown: false}}/>
+        <Stack.Screen name={screens.SearchCityView} component={SearchByCityView} initialParams={{title: "SEARCH BY CITY", searchWindow: screens.CityDetails}}/>
+        <Stack.Screen name={screens.SearchCountryView} component={SearchByCityView} initialParams={{title: "SEARCH BY COUNTRY", searchWindow: screens.SearchCountry}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
+
+  
 }
+
+
