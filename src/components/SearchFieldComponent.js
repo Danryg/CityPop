@@ -1,14 +1,14 @@
 import React from 'react';
 import WideTextInput from './WideTextInput';
-import {View, Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet,TouchableHighlight} from 'react-native';
 
 export function SearchFieldComponent(props) {
     return (
         <View style={styles.buttonContainer}>
-            <WideTextInput  placeholder ='Enter a City '/>
-            <View  style={styles.searchButtonContainer}>
+            <WideTextInput value placeholder ='Enter a City '/>
+            <TouchableHighlight onPress={()=>props.searchHandler("search")} style={styles.searchButtonContainer}>
                 <Image style={styles.searchButton} source={require('../../assets/SearchIcon.png')}></Image>
-            </View>
+            </TouchableHighlight>
         </View>
     );
 }
