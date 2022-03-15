@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableWithoutFeedback} from 'react-native';
-import WideTextInput from '../components/WideTextInput';
+import SearchFieldComponent from '../components/SearchFieldComponent';
+
 
 export function SearchByCityView(props) {
     return (
@@ -15,12 +16,7 @@ export function SearchByCityView(props) {
             <View style={styles.titleContainer}>
                 <Text style={styles.title}>Search by City</Text>
             </View>
-            <View style={styles.buttonContainer}>
-                <WideTextInput  placeholder ='Enter a City '/>
-                <View  style={styles.searchButtonContainer}>
-                    <Image style={styles.searchButton} source={require('../../assets/SearchIcon.png')}></Image>
-                </View>
-            </View>
+            <SearchFieldComponent style={styles.buttonContainer}/>
         </View>
     );
 }
@@ -57,25 +53,6 @@ const styles = StyleSheet.create({
     },
     buttonContainer:{
         flex:0.6,
-        alignItems: 'center'
-
-    },
-    searchButtonContainer:{
-        width: 60,
-        height: 60,
-        borderWidth: 1,
-        borderRadius: 50,
-        borderColor: "black",
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: "white",
-
-        elevation: 7,
-    },
-    searchButton:{
-        width: 30,
-        height: 30,
-
     }
 
 })  
