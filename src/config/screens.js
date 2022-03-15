@@ -2,6 +2,6 @@ export default{
     Home:"Home",
     SearchCityView:"SearchCity",
     SearchCountryView:"SearchCountry",
-    SearchCountry:"SearchCountry",
+    SearchCountry:"CityList",
     CityDetails:"CityDetails"
 }
