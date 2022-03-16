@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { View, StyleSheet, Text } from 'react-native';
 import CenteredTitleComponent from '../components/CenteredTitleComponent';
-import getPopulationFromCity from '../helper/populationAPI';
+import {getPopulationFromCity} from '../helper/populationAPI';
 
 export class CityPopulationView extends Component {
 
@@ -29,7 +29,7 @@ export class CityPopulationView extends Component {
 
     thing = async (text) =>{
         var city = await getPopulationFromCity(text);
-        city = Math.round(city)
+        city = Math.round(city);
         city = this.formatPopulation(city);
         this.setState({population: city});
     }
