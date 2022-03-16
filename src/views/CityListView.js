@@ -1,69 +1,55 @@
-import React from 'react';
+import React,{Component} from 'react';
 import { View, StyleSheet , FlatList} from 'react-native';
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import CenteredTitleComponent from '../components/CenteredTitleComponent';
 import CountryListItem from '../components/CountryListItem';
+import { getCitiesInCountry } from '../helper/populationAPI';
 
 
-const DATA = [
-    {
-      id: '1',
-      title: 'Paris',
-    },
-    {
-      id: '2',
-      title: 'thing2',
-    },
-    {
-      id: '4',
-      title: 'thing3',
-    },
-    {
-      id: '5',
-      title: 'thing3',
-    },
-    {
-      id: '6',
-      title: 'thing3',
-    },{
-      id: '7',
-      title: 'thing3',
-    },
-    {
-      id: '8',
-      title: 'thing3',
-    },
-    {
-      id: '9',
-      title: 'thing3',
-    },
-    {
-      id: '10',
-      title: 'thing3',
-    },
-    {
-      id: '11',
-      title: 'thing3',
-    },
-  ];
+const DATA = [];
 
 
-const CityListView = () =>{
-    const renderItem = ({ item }) => (
-        <CountryListItem name={item.title} />
-    );
-    return (
-        <View style={styles.content}>
-            <CenteredTitleComponent title="Country name"/>
-            <View style={styles.cityList}>
-                <FlatList 
-                    data={DATA}
-                    renderItem={renderItem}
-                    keyExtractor= {item => item.id}
-                />
+export class CityListView extends Component{
+
+    state={
+        cities: []
+    }
+
+    constructor(props){
+        super();
+        this.initiate(props.route.params.searchword);
+        this.render();
+    }
+    render(){
+        const renderItem = ({ item }) => (
+            <CountryListItem name={item.citie} />
+        );
+        return (
+            <View style={styles.content}>
+                
+                <CenteredTitleComponent title="Country name"/>
+                <View style={styles.cityList}>
+                    <FlatList 
+                        data={this.state.cities}
+                        renderItem={renderItem}
+                        keyExtractor= {item => item.id}
+                    />
+                </View>
             </View>
-        </View>
-    );
+        );
+    }
+
+    initiate = async (name) =>{
+        var arr = await getCitiesInCountry(name);
+        
+       for(var i = 0; i< 10 ;i++){
+            var citie = {id: i, citie: arr[i].city};
+            
+            this.setState({cities:[... this.state.cities, citie ]});
+            
+        }
+        
+    }
 }
 
 const styles = StyleSheet.create({
