@@ -6,6 +6,7 @@ import {SearchByCityView} from './src/views/SearchByCityView'
 
 import screens from './src/config/screens';
 import CityListView from './src/views/CityListView';
+import CityPopulationView from './src/views/CityPopulationView';
 
 
 const Stack = createNativeStackNavigator();
@@ -44,10 +45,16 @@ export default function App() {
           name={screens.SearchCountry} 
           component={CityListView} 
           options={{title:"CityPop"}} 
-          initialParams={{
-            
-          }}
+          
         />
+        {/** City Population View */}
+        <Stack.Screen 
+          name={screens.CityDetails} 
+          component={CityPopulationView} 
+          options={{title:"CityPop"}} 
+          
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
