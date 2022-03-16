@@ -1,20 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
+
 import { View, StyleSheet, Text } from 'react-native';
 import CenteredTitleComponent from '../components/CenteredTitleComponent';
+import {getPopulationFromCity} from '../helper/populationAPI';
 
-function CityPopulationView(props) {
-    return (
-        <View style={styles.container}>
-            <CenteredTitleComponent title="City Name"/>
+export class CityPopulationView extends Component {
 
-            <View style={styles.populationBox}>
-                <Text style={styles.populationTitle}>POPULATION</Text>
-                <Text style={styles.populationNumber}>2 244 000</Text>
+    state={
+        population: 0
+    }
+
+    constructor(props){
+        super();
+        this.thing(props.route.params.searchword);
+    }
+
+    render(){
+        return (
+            <View style={styles.container}>
+                <CenteredTitleComponent title="City Name"/>
+                <View style={styles.populationBox}>
+                    <Text style={styles.populationTitle}>POPULATION</Text>
+                    <Text style={styles.populationNumber}>{this.state.population}</Text>
+                </View>
             </View>
-        </View>
+        );
+    }
 
-    );
+    thing = async (text) =>{
+        var city = await getPopulationFromCity(text);
+        city = Math.round(city);
+        city = this.formatPopulation(city);
+        this.setState({population: city});
+    }
+
+    formatPopulation(number){
+        var length = number.toLocaleString().length ;
+        var k = (length / 3);
+        
+        let origString = number.toLocaleString();
+
+        origString = origString.split('')
+        var res =number.toLocaleString();
+        for( var i = length % 3; i< 4*k; i = i + 4){
+            origString.splice(i, 0, " ");
+        }
+
+        res = origString.join('');
+        
+        return res;
+    }
 }
+export default CityPopulationView;
 
 const styles = StyleSheet.create({
     container:{
@@ -35,8 +72,5 @@ const styles = StyleSheet.create({
     populationNumber:{
         fontSize: 40
     }
-
-
 })
 
-export default CityPopulationView;
