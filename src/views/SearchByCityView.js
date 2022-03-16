@@ -12,7 +12,7 @@ import {SearchFieldComponent} from '../components/SearchFieldComponent';
  */
 export class SearchByCityView extends Component {
     render(){
-        console.log(this.props);
+        
         return (
         
             <View style={styles.container}>
@@ -20,12 +20,12 @@ export class SearchByCityView extends Component {
                 <CenteredTitleComponent title={this.props.route.params.title}/>
 
                 {/** Search component */}
-                <SearchFieldComponent style={styles.buttonContainer} searchHandler={(search) => {this.navigateTo(this.props.params.searchWindow)} }/>
+                <SearchFieldComponent style={styles.buttonContainer} searchHandler={() => this.navigateTo(this.props.route.params.searchWindow)}/>
             </View>
         );
     }
     navigateTo = (screenName) =>{
-        console.log(this.props.navigation);
+        console.log(screenName);
         this.props.navigation.navigate(screenName);
     }
 }
