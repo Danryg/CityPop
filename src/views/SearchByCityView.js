@@ -20,13 +20,13 @@ export class SearchByCityView extends Component {
                 <CenteredTitleComponent title={this.props.route.params.title}/>
 
                 {/** Search component */}
-                <SearchFieldComponent style={styles.buttonContainer} searchHandler={() => this.navigateTo(this.props.route.params.searchWindow)}/>
+                <SearchFieldComponent style={styles.buttonContainer} searchHandler={(text) => this.navigateTo(this.props.route.params.searchWindow, {searchword: text})}/>
             </View>
         );
     }
-    navigateTo = (screenName) =>{
+    navigateTo = (screenName, searchWord) =>{
         console.log(screenName);
-        this.props.navigation.navigate(screenName);
+        this.props.navigation.navigate(screenName, searchWord);
     }
 }
 
