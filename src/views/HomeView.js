@@ -26,6 +26,10 @@ export class HomeView extends Component {
         );
     }
 
+    /**
+     * Navigates to another screen
+     * @param {*ENUM screen name gotten from screens.js in config}  screenName 
+     */
     navigateTo = (screenName) =>{
         console.log(this.props.navigation);
         this.props.navigation.navigate(screenName);
