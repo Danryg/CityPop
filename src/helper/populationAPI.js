@@ -1,6 +1,10 @@
 
 
-
+/**
+ * Helper fucntion that takes a city name nad retuns it's population
+ * @param {*cityname name of the city} name 
+ * @returns "error" if city does not exist otherwise the population
+ */
 export async function getPopulationFromCity(name){
     
     var res = 0;
@@ -29,6 +33,11 @@ export async function getPopulationFromCity(name){
     });
 }
 
+/**
+ * This is a helper function that will fetch all the cities in a given country, sorted by population in descending order
+ * @param {*Countryname name of country} name 
+ * @returns a list of cities in the given country
+ */
 export async function getCitiesInCountry(name){
 
 

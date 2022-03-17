@@ -9,7 +9,10 @@ import { getCitiesInCountry } from '../helper/populationAPI';
 
 const DATA = [];
 
-
+/**
+ * View that shows a list of cities from a given country
+ * @param {Countryname given by parameter in navigate function} props.route.params
+ */
 export class CityListView extends Component{
 
     state={
@@ -40,13 +43,21 @@ export class CityListView extends Component{
         );
     }
 
+
+    /**
+     * Navigates to city population view and shows the population of a given city
+     * @param {cityname name of city that should be displayed} citie 
+     */
     showPopulation(citie){
-        console.log("Grej ", citie);
-        
         this.props.navigation.navigate(screens.CityDetails, {searchword: citie});
     }
 
 
+    /**
+     * Initiates the data that will be displayed
+     * @param {*Countryname name of the country that will be used to fetch cities and display the title} name 
+     * @returns 
+     */
     initiate = async (name) =>{
         var arr = await getCitiesInCountry(name);
 

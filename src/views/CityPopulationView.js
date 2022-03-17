@@ -31,10 +31,14 @@ export class CityPopulationView extends Component {
         );
     }
 
-    initiatePopulation = async (text) =>{
+    /**
+     * Initiates all the data that will be displayed
+     * @param {*cityname name of the city in which population should be displayed} city 
+     */
+    initiatePopulation = async (city) =>{
 
         
-        var city = await getPopulationFromCity(text);
+        var city = await getPopulationFromCity(city);
 
         if(city == "error"){
             this.props.navigation.goBack();
