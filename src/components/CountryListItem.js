@@ -1,7 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet,TouchableHighlight } from 'react-native';
 
-
+/**
+ * This is a city list item, designed to represent a city in a list
+ * @param {onPressHandler function that will be called when this item is pressed} props
+ * @param {*name name that will be displayed } props 
+ * @returns CountryListItem
+ */
 function CountryListItem(props) {
     return (
         <TouchableHighlight style={styles.container} onPress={()=>props.onPressHandler(props.name)}>
