@@ -28,7 +28,7 @@ export class CityListView extends Component{
         return (
             <View style={styles.content}>
                 
-                <CenteredTitleComponent title="Country name"/>
+                <CenteredTitleComponent title={this.state.countryName}/>
                 <View style={styles.cityList}>
                     <FlatList 
                         data={this.state.cities}
@@ -49,6 +49,9 @@ export class CityListView extends Component{
 
     initiate = async (name) =>{
         var arr = await getCitiesInCountry(name);
+
+        var title = name.toUpperCase();
+        this.setState({countryName: title});
         if(arr == undefined){
             console.log("error");
 
