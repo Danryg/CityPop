@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Alert } from 'react-native';
 import CenteredTitleComponent from '../components/CenteredTitleComponent';
 import {getPopulationFromCity} from '../helper/populationAPI';
 
@@ -28,7 +28,17 @@ export class CityPopulationView extends Component {
     }
 
     thing = async (text) =>{
+
+        
         var city = await getPopulationFromCity(text);
+
+        if(city == "error"){
+            this.props.navigation.goBack();
+            Alert.alert("City does not exist", "Check for spelling error");
+            return;
+        }
+
+
         city = Math.round(city);
         city = this.formatPopulation(city);
         this.setState({population: city});
