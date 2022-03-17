@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
-import { View, StyleSheet , FlatList} from 'react-native';
+import { View, StyleSheet , FlatList, Alert} from 'react-native';
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import CenteredTitleComponent from '../components/CenteredTitleComponent';
 import CountryListItem from '../components/CountryListItem';
+import screens from '../config/screens';
 import { getCitiesInCountry } from '../helper/populationAPI';
 
 
@@ -22,7 +23,7 @@ export class CityListView extends Component{
     }
     render(){
         const renderItem = ({ item }) => (
-            <CountryListItem name={item.citie} />
+            <CountryListItem name={item.citie} onPressHandler={(citie)=> this.showPopulation(citie)} />
         );
         return (
             <View style={styles.content}>
@@ -38,6 +39,13 @@ export class CityListView extends Component{
             </View>
         );
     }
+
+    showPopulation(citie){
+        console.log("Grej ", citie);
+        
+        this.props.navigation.navigate(screens.CityDetails, {searchword: citie});
+    }
+
 
     initiate = async (name) =>{
         var arr = await getCitiesInCountry(name);
