@@ -35,22 +35,22 @@ export class CityPopulationView extends Component {
      * Initiates all the data that will be displayed
      * @param {*cityname name of the city in which population should be displayed} city 
      */
-    initiatePopulation = async (city) =>{
+    initiatePopulation = async (cityName) =>{
 
         
-        var city = await getPopulationFromCity(city);
+        var cityPopulation = await getPopulationFromCity(cityName);
 
-        if(city == "error"){
+        if(cityPopulation == "error"){
             this.props.navigation.goBack();
             Alert.alert("City does not exist", "Check for spelling error");
             return;
         }
 
 
-        city = Math.round(city);
-        city = formatter.formatPopulationNumber(city);
-        var title = text.toUpperCase();
-        this.setState({cityname: title, population: city});
+        cityPopulation = Math.round(cityPopulation);
+        cityPopulation = formatter.formatPopulationNumber(cityPopulation);
+        var title = cityName.toUpperCase();
+        this.setState({cityname: title, population: cityPopulation});
     }
 
     
