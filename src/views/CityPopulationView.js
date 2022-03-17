@@ -45,7 +45,8 @@ export class CityPopulationView extends Component {
 
         city = Math.round(city);
         city = formatter.formatPopulationNumber(city);
-        this.setState({cityname: text, population: city});
+        var title = text.toUpperCase();
+        this.setState({cityname: title, population: city});
     }
 
     
