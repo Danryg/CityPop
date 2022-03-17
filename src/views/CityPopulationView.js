@@ -13,7 +13,7 @@ export class CityPopulationView extends Component {
 
     constructor(props){
         super();
-        this.thing(props.route.params.searchword);
+        this.initiatePopulation(props.route.params.searchword);
     }
 
     render(){
@@ -28,7 +28,7 @@ export class CityPopulationView extends Component {
         );
     }
 
-    thing = async (text) =>{
+    initiatePopulation = async (text) =>{
 
         
         var city = await getPopulationFromCity(text);
