@@ -14,7 +14,21 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator 
+        initialRouteName='Home'
+        screenOptions=
+        {
+          {
+            headerShadowVisible: false,
+            title: "CityPop",
+            headerStyle:{
+              backgroundColor: 'white',
+              shadowOpacity: 0,
+              elevation: 0
+            }
+          }
+        }
+      >
         {/** Home Screen */}
         <Stack.Screen name={screens.Home} component={HomeView} options={{headerShown: false}}/>
 
@@ -22,7 +36,7 @@ export default function App() {
         <Stack.Screen 
           name={screens.SearchCityView} 
           component={SearchByCityView} 
-          options={{title:"CityPop"}}  
+           
           initialParams={{
             title: "SEARCH BY CITY", 
             searchWindow: screens.CityDetails
@@ -33,7 +47,6 @@ export default function App() {
         <Stack.Screen 
           name={screens.SearchCountryView} 
           component={SearchByCityView} 
-          options={{title:"CityPop"}} 
           initialParams={{
             title: "SEARCH BY COUNTRY", 
             searchWindow: screens.SearchCountry
@@ -44,14 +57,13 @@ export default function App() {
         <Stack.Screen 
           name={screens.SearchCountry} 
           component={CityListView} 
-          options={{title:"CityPop"}} 
-          
         />
+
         {/** City Population View */}
         <Stack.Screen 
           name={screens.CityDetails} 
           component={CityPopulationView} 
-          options={{title:"CityPop"}} 
+          
           
         />
 
