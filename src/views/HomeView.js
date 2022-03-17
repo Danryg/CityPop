@@ -41,6 +41,7 @@ export class HomeView extends Component {
 const styles = StyleSheet.create({
     container:{
         flex:1,
+        backgroundColor: "white",
     },
     titleBox:{
         flex:0.4,
