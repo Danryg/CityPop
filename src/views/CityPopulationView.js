@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, Alert } from 'react-native';
 import CenteredTitleComponent from '../components/CenteredTitleComponent';
 import {getPopulationFromCity} from '../helper/populationAPI';
+import formatter from '../utils/formatter';
 
 export class CityPopulationView extends Component {
 
@@ -40,26 +41,11 @@ export class CityPopulationView extends Component {
 
 
         city = Math.round(city);
-        city = this.formatPopulation(city);
+        city = formatter.formatPopulationNumber(city);
         this.setState({population: city});
     }
 
-    formatPopulation(number){
-        var length = number.toLocaleString().length ;
-        var k = (length / 3);
-        
-        let origString = number.toLocaleString();
-
-        origString = origString.split('')
-        var res =number.toLocaleString();
-        for( var i = length % 3; i< 4*k; i = i + 4){
-            origString.splice(i, 0, " ");
-        }
-
-        res = origString.join('');
-        
-        return res;
-    }
+    
 }
 export default CityPopulationView;
 
