@@ -24,7 +24,7 @@ export async function getPopulationFromCity(name){
         return res;
     })
     .catch((error) => {
-        console.log(error);
+        
         return "error"
     });
 }
@@ -41,17 +41,19 @@ export async function getCitiesInCountry(name){
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            limit: 10,
-            order: "asc",
-            orderBy: "name",
+            limit: 30,
+            order: "dsc",
+            orderBy: "population",
             country: name
         })
     }).then((response) =>{
         
        return response.json();
     }).then((responseData) => {
-       
+
+        
         var ticketList = responseData;
+
         return ticketList.data;
     })
     .catch((error) => {
