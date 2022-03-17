@@ -3,22 +3,26 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, Alert } from 'react-native';
 import CenteredTitleComponent from '../components/CenteredTitleComponent';
 import {getPopulationFromCity} from '../helper/populationAPI';
+import formatter from '../utils/formatter';
 
+/**
+ * City population view, this is the view that shows the user the population of a city
+ */
 export class CityPopulationView extends Component {
 
     state={
-        population: 0
+        cityname: "Loading...",
     }
 
     constructor(props){
         super();
-        this.thing(props.route.params.searchword);
+        this.initiatePopulation(props.route.params.searchword);
     }
 
     render(){
         return (
             <View style={styles.container}>
-                <CenteredTitleComponent title="City Name"/>
+                <CenteredTitleComponent title={this.state.cityname}/>
                 <View style={styles.populationBox}>
                     <Text style={styles.populationTitle}>POPULATION</Text>
                     <Text style={styles.populationNumber}>{this.state.population}</Text>
@@ -27,7 +31,7 @@ export class CityPopulationView extends Component {
         );
     }
 
-    thing = async (text) =>{
+    initiatePopulation = async (text) =>{
 
         
         var city = await getPopulationFromCity(text);
@@ -40,33 +44,20 @@ export class CityPopulationView extends Component {
 
 
         city = Math.round(city);
-        city = this.formatPopulation(city);
-        this.setState({population: city});
+        city = formatter.formatPopulationNumber(city);
+        var title = text.toUpperCase();
+        this.setState({cityname: title, population: city});
     }
 
-    formatPopulation(number){
-        var length = number.toLocaleString().length ;
-        var k = (length / 3);
-        
-        let origString = number.toLocaleString();
-
-        origString = origString.split('')
-        var res =number.toLocaleString();
-        for( var i = length % 3; i< 4*k; i = i + 4){
-            origString.splice(i, 0, " ");
-        }
-
-        res = origString.join('');
-        
-        return res;
-    }
+    
 }
 export default CityPopulationView;
 
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        alignItems:'center'
+        alignItems:'center',
+        backgroundColor: "white",
         
     },
     populationBox:{
