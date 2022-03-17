@@ -4,7 +4,7 @@ import { View, Text, StyleSheet,TouchableHighlight } from 'react-native';
 
 function CountryListItem(props) {
     return (
-        <TouchableHighlight style={styles.container} onPress={()=> console.log(props.name)}>
+        <TouchableHighlight style={styles.container} onPress={()=>props.onPressHandler(props.name)}>
             <Text style={styles.countryName}>{props.name}</Text>
         </TouchableHighlight>
     );
