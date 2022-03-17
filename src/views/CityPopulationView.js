@@ -5,10 +5,13 @@ import CenteredTitleComponent from '../components/CenteredTitleComponent';
 import {getPopulationFromCity} from '../helper/populationAPI';
 import formatter from '../utils/formatter';
 
+/**
+ * City population view, this is the view that shows the user the population of a city
+ */
 export class CityPopulationView extends Component {
 
     state={
-        population: 0
+        cityname: "Loading...",
     }
 
     constructor(props){
@@ -19,7 +22,7 @@ export class CityPopulationView extends Component {
     render(){
         return (
             <View style={styles.container}>
-                <CenteredTitleComponent title="City Name"/>
+                <CenteredTitleComponent title={this.state.cityname}/>
                 <View style={styles.populationBox}>
                     <Text style={styles.populationTitle}>POPULATION</Text>
                     <Text style={styles.populationNumber}>{this.state.population}</Text>
@@ -42,7 +45,7 @@ export class CityPopulationView extends Component {
 
         city = Math.round(city);
         city = formatter.formatPopulationNumber(city);
-        this.setState({population: city});
+        this.setState({cityname: text, population: city});
     }
 
     
