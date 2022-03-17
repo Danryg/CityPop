@@ -49,7 +49,14 @@ export class CityListView extends Component{
 
     initiate = async (name) =>{
         var arr = await getCitiesInCountry(name);
-        
+        if(arr == undefined){
+            console.log("error");
+
+            this.props.navigation.goBack();
+            Alert.alert("Country does not exist", "Check for spelling errors");
+
+            return;
+        }
        for(var i = 0; i< 10 ;i++){
             var citie = {id: i, citie: arr[i].city};
             
