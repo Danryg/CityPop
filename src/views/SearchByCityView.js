@@ -24,6 +24,11 @@ export class SearchByCityView extends Component {
             </View>
         );
     }
+    /**
+     * Navigates to a given screen with searchWord as parameter
+     * @param {*ScreenName from screen.js config file } screenName 
+     * @param {*Searchword given as a parameter to the screen} searchWord 
+     */
     navigateTo = (screenName, searchWord) =>{
         console.log(screenName);
         this.props.navigation.navigate(screenName, searchWord);

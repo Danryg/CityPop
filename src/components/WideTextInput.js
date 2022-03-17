@@ -2,7 +2,7 @@ import React from 'react';
 import {TextInput, StyleSheet} from 'react-native';
 
 /**
- * 
+ * Displayes a styled text input
  * @param {*placeholder placeholder text} props 
  * @param {*searchTextHandler(text) function for getting text from inputfield} props 
  * @returns WideTextInput component

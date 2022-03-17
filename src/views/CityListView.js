@@ -7,7 +7,6 @@ import screens from '../config/screens';
 import { getCitiesInCountry } from '../helper/populationAPI';
 
 
-const DATA = [];
 
 /**
  * View that shows a list of cities from a given country

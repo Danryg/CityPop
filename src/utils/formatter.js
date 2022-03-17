@@ -1,4 +1,7 @@
 
+/**
+ * Used to format data
+ */
 class formatter{
 
     static formatPopulationNumber(population){

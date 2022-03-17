@@ -3,9 +3,9 @@ import {View, Text, StyleSheet} from 'react-native';
 
 
 /**
- * This will place a centered title at the topof the page
+ * This will place a centered title at the top of the page
  * @param {*title the centered title text} props 
- * @returns 
+ * @returns CenteredTitleComponent
  */
 export function CenteredTitleComponent(props) {
     return (
