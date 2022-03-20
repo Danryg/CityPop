@@ -23,12 +23,20 @@ export class CityPopulationView extends Component {
         return (
             <View style={styles.container}>
                 <CenteredTitleComponent title={this.state.cityname}/>
-                <View style={styles.populationBox}>
-                    <Text style={styles.populationTitle}>POPULATION</Text>
-                    <Text style={styles.populationNumber}>{this.state.population}</Text>
-                </View>
+                {this.getPopulation()}
             </View>
         );
+    }
+
+    getPopulation(){
+
+        if(this.state.population == null){
+            return;
+        }
+        return <View style={styles.populationBox}>
+                    <Text style={styles.populationTitle}>POPULATION</Text>
+                    <Text style={styles.populationNumber}>{this.state.population}</Text>
+                </View>;
     }
 
     /**
