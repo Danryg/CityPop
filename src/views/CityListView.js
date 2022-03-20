@@ -15,7 +15,8 @@ import { getCitiesInCountry } from '../helper/populationAPI';
 export class CityListView extends Component{
 
     state={
-        cities: []
+        cities: [],
+        countryName: "loading..."
     }
 
     constructor(props){
@@ -61,7 +62,7 @@ export class CityListView extends Component{
         var arr = await getCitiesInCountry(name);
 
         var title = name.toUpperCase();
-        this.setState({countryName: title});
+        
         if(arr == undefined){
             console.log("error");
 
@@ -76,7 +77,9 @@ export class CityListView extends Component{
             this.setState({cities:[... this.state.cities, citie ]});
             
         }
-        
+
+
+        this.setState({countryName: title});
     }
 }
 
