@@ -19,7 +19,7 @@ export class SearchFieldComponent extends Component{
         return (
             <View style={styles.buttonContainer}>
                 {/** Input field*/}
-                <WideTextInput placeholder ='Enter a City' searchTextHandler={this.setSearchText}/>
+                <WideTextInput placeholder ={this.props.inputHint}  searchTextHandler={this.setSearchText}/>
 
                 {/** Search button*/}
                 <TouchableHighlight onPress={()=> this.props.searchHandler(this.state.search)} style={styles.searchButtonContainer}>

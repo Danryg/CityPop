@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import {HomeView} from './src/views/HomeView';
-import {SearchByCityView} from './src/views/SearchByCityView'
+import {SearchView} from './src/views/SearchView'
 
 import screens from './src/config/screens';
 import CityListView from './src/views/CityListView';
@@ -35,21 +35,23 @@ export default function App() {
         {/** Search City Screen */}
         <Stack.Screen 
           name={screens.SearchCityView} 
-          component={SearchByCityView} 
+          component={SearchView} 
            
           initialParams={{
             title: "SEARCH BY CITY", 
-            searchWindow: screens.CityDetails
+            searchWindow: screens.CityDetails,
+            inputHint: "Enter a city"
           }}
         />
 
         {/** Search Country Screen */}
         <Stack.Screen 
           name={screens.SearchCountryView} 
-          component={SearchByCityView} 
+          component={SearchView} 
           initialParams={{
             title: "SEARCH BY COUNTRY", 
-            searchWindow: screens.SearchCountry
+            searchWindow: screens.SearchCountry,
+            inputHint: "Enter a country"
           }}
         />
 

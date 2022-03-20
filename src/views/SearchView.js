@@ -10,7 +10,7 @@ import {SearchFieldComponent} from '../components/SearchFieldComponent';
  * 
  * @returns SearchByCityView component
  */
-export class SearchByCityView extends Component {
+export class SearchView extends Component {
     render(){
         
         return (
@@ -20,7 +20,7 @@ export class SearchByCityView extends Component {
                 <CenteredTitleComponent title={this.props.route.params.title}/>
 
                 {/** Search component */}
-                <SearchFieldComponent style={styles.buttonContainer} searchHandler={(text) => this.navigateTo(this.props.route.params.searchWindow, {searchword: text})}/>
+                <SearchFieldComponent style={styles.buttonContainer} inputHint = {this.props.route.params.inputHint} searchHandler={(text) => this.navigateTo(this.props.route.params.searchWindow, {searchword: text})}/>
             </View>
         );
     }
@@ -60,4 +60,4 @@ const styles = StyleSheet.create({
 
 })  
 
-export default SearchByCityView;
+export default SearchView;
